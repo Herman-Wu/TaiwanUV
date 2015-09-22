@@ -1,0 +1,32 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10DemoApp01.Styles">
+
+    <DataTemplate x:Key="MenuItemDataTemplate">
+        <Grid
+			Width="250">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border 
+				Grid.Column="0"
+				Background="Transparent" 
+			    Width="40" 
+				Height="40">
+                <FontIcon 
+					FontFamily="Segoe MDL2 Assets" 
+					Foreground="White"
+					Glyph="{Binding Icon}" />
+            </Border>
+            <TextBlock 
+				Grid.Column="1"
+				Text="{Binding Title, Converter={StaticResource ToUpperConverter}}"
+				Foreground="White"
+				VerticalAlignment="Center"
+				Margin="10, 0" />
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="Win10DemoApp01.Views.UVMapView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10DemoApp01.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="MiddleStateA">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="subTitleText.(Foreground)" Value="Black"/>
+                        <Setter Target="subTitleText.(RelativePanel.RightOf)" Value="titleText"/>
+                        <Setter Target="subTitleText.(RelativePanel.AlignVerticalCenterWithPanel)" Value="True"/>
+                        <Setter Target="titleText.(Foreground)" Value="Black"/>
+                        <Setter Target="titleText.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="True"/>
+                        <Setter Target="titleText.(RelativePanel.AlignVerticalCenterWithPanel)" Value="True"/>
+                  
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="NarrowStateA">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                        <Setter Target="subTitleText.(Foreground)" Value="Blue"/>
+                        <Setter Target="subTitleText.(RelativePanel.Above)" Value="titleText"/>
+                        <Setter Target="subTitleText.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="True"/>
+                        <Setter Target="titleText.(Foreground)" Value="Blue"/>
+                        <Setter Target="titleText.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="True"/>
+                        <Setter Target="titleText.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                       
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" EntranceNavigationTransitionInfo.IsTargetElement="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <RelativePanel  Grid.Row="0" >
+                <TextBlock Name="titleText" FontSize="32"   Style="{ThemeResource TitleTextBlockStyle}" Text=" 全台紫外線指數 "  />
+                <TextBlock Name="subTitleText" FontSize="32"  Style="{ThemeResource TitleTextBlockStyle}" RelativePanel.Above="titleText"  RelativePanel.AlignVerticalCenterWithPanel="True" Text=" 地圖瀏覽"/>
+
+            </RelativePanel>
+            <maps:MapControl Grid.Row="1"  x:Name="myMap"  MapServiceToken="s6d5snqdcpDYil0a0sdf~YvLG3n1WvurimEjORi9Ckg~AvBwWQfj8fLIMPJ3F6ZqxnK64H18Qqn1Mi24ZyCRluowFd6amVFuHdHkn0BASCui"  >
+
+
+
+            </maps:MapControl>
+
+        </Grid>
+    </Grid>
+</Page>

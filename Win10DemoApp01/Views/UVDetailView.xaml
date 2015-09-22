@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="Win10DemoApp01.Views.UVDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10DemoApp01.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="GridViewDataTemplate">
+                <Grid>
+                    <Rectangle Stretch="Fill" Fill="Green" Height="192" Width="342"  />
+                    <TextBlock x:Name="uvTextBlock"  Text="{Binding UVI}" FontSize="64" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <!--Image Stretch="Fill" Source="{Binding Source}" Height="192" Width="342" / -->
+                    <Border x:Name="border" Opacity=".6" Background="Gray" VerticalAlignment="Bottom" >
+                        <TextBlock Text="{Binding SiteName}" FontSize="22" Foreground="White" HorizontalAlignment="Center"/>
+                    </Border>
+                </Grid>
+            </DataTemplate>
+
+            <ItemsPanelTemplate x:Key="GridViewItemPanelTemplate">
+                <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="5" />
+            </ItemsPanelTemplate>
+
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="MiddleStateA">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="border.(VerticalAlignment)" Value="Bottom"/>
+                        <Setter Target="uvTextBlock.(Foreground)" Value="White"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="NarrowStateA">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="border.(VerticalAlignment)" Value="Top"/>
+                        <Setter Target="uvTextBlock.(Foreground)" Value="Green"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <!-- Add ItemsSource="{Binding ImageList}" to GridView     -->
+
+        <GridView x:Name="gv" ScrollViewer.HorizontalScrollMode="Disabled"  ScrollViewer.VerticalScrollMode="Auto"   
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  HorizontalAlignment="Center"
+                  ItemTemplate="{StaticResource GridViewDataTemplate}" 
+                  ItemsPanel="{StaticResource GridViewItemPanelTemplate }"
+                  
+                  ItemsSource="{Binding TaiwanUVData}"
+                  />
+
+    </Grid>
+</Page>
