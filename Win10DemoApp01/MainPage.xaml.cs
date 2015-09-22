@@ -31,6 +31,7 @@ namespace Win10DemoApp01
         public MainPage()
         {
             this.InitializeComponent();
+            // 啟動APP後更新動態磚
             UpdateTile();
 
         }
