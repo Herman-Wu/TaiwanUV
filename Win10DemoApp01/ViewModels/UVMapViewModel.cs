@@ -35,6 +35,7 @@ namespace Win10DemoApp01.ViewModels
             }
         }
 
+        //取得資料
         public async Task LoadData()
         {
             TaiwanUVOpenDataService tUV = new TaiwanUVOpenDataService();

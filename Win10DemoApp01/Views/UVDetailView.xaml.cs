@@ -47,6 +47,7 @@ namespace Win10DemoApp01.Views
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            //當使用者離開頁面時, 將資料記錄下來做分析
             var telemetry = new TelemetryClient();
             PageViewTelemetry pvT = new PageViewTelemetry("ViewedUVDetailView");
             TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;

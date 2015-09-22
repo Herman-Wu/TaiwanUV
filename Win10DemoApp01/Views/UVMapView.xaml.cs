@@ -47,7 +47,7 @@ namespace Win10DemoApp01.Views
             this.InitializeComponent();
             myMap.Center = new Geopoint(new BasicGeoposition
             {
-                // Geopoint for San Francisco
+                // 設定地圖預設瀏覽地區及放大比例
                 Latitude = 25.038533,
                 Longitude = 121.568150,
             });
@@ -89,6 +89,7 @@ namespace Win10DemoApp01.Views
             }
         }
 
+        //在地圖上用顏色顯示各地區紫外線指數
         public void AddPushpin(BasicGeoposition location, string inUVLeve)
         {
             int uvLevel=0;

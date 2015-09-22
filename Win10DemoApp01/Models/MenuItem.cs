@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Win10DemoApp01.Models
 {
+    //選單Model
     public class MenuItem
     {
         public string Icon { get; set; }

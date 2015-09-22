@@ -24,6 +24,8 @@ namespace Win10DemoApp01.Utils
                 IsInitialized = true;
             }
         }
+
+        //取得裝置ID
         private static string GetDeviceID()
         {
             string deviceID = "";
@@ -42,6 +44,8 @@ namespace Win10DemoApp01.Utils
             }
             return deviceID;
         }
+
+        //取得使用者名稱
         private static async void SetUserName()
         {
             UserName = "";

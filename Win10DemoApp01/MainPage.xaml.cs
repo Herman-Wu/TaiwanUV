@@ -31,13 +31,15 @@ namespace Win10DemoApp01
         public MainPage()
         {
             this.InitializeComponent();
-            // 啟動APP後更新動態磚
+
+            // 啟動APP後立即更新動態磚
             UpdateTile();
 
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+           
             MainViewModel mvm = new MainViewModel();
             mvm.SetSplitFrame(SplitViewFrame);
             mvm.InitialMenuItems();
@@ -51,25 +53,27 @@ namespace Win10DemoApp01
 
         private void clickHamburgerBtn(object sender, RoutedEventArgs e)
         {
-
+            // 切換左側功能選單開關
             this.mainSplitView.IsPaneOpen = !this.mainSplitView.IsPaneOpen;
         }
 
         private async void UpdateTile()
         {
+            //取得台灣各城市UV資料
             TaiwanUVOpenDataService twUVDataSer = new TaiwanUVOpenDataService();
             List<TaiwanCityUV> twCityUVData = await twUVDataSer.GetTaiwanUVData();
 
-            // create the instance of Tile Updater, which enables you to change the appearance of the calling app's tile
+            // 建立 TileUpdateManager 物件以更新動態磚
             var updater = TileUpdateManager.CreateTileUpdaterForApplication();
 
-            // enables the tile to queue up to five notifications
+            //　最多可Queue 五則通知
             updater.EnableNotificationQueue(true);
             updater.Clear();
 
-            // get the XML content of one of the predefined tile templates, so that, you can customize it
+            // 取得動態磚範本XML
             XmlDocument tileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150Block);
 
+            //設定動態磚資料
             if (twCityUVData.Count > 0)
             {
                 System.Random rnd = new System.Random();

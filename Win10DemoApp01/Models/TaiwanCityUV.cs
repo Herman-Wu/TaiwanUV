@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Win10DemoApp01.Models
-{
+{   
+    //Taiwan UV 資料格式
     public class TaiwanCityUV: INotifyPropertyChanged
     {
         public string County { get; set; }

@@ -18,6 +18,7 @@ namespace Win10DemoApp01.Services
         const string TaiwanAirConditionOpenDataUrl = @"http://opendata.epa.gov.tw/ws/Data/AQX/?format=json";
         private string RawContent;
 
+        //透過HttpClient 去取得紫外線Open Data 
         public async Task<List<TaiwanCityUV>> GetTaiwanUVData()
         {
 
@@ -49,11 +50,7 @@ namespace Win10DemoApp01.Services
                     RawContent = testContent;
                     RawContent = "There are " + taiwanUVData.Count + " " + RawContent;
 
-                    taiwanUVData=DeserializeTaiwanUVJason(content);
-
-                  
-
-
+                    taiwanUVData=DeserializeTaiwanUVJason(content);                  
                 }
                 catch (Exception ex)
                 {
@@ -71,6 +68,7 @@ namespace Win10DemoApp01.Services
 
         }
 
+        //將取得的Json 資料轉成 TaiwanCityUV 資料物件
         public List<TaiwanCityUV> DeserializeTaiwanUVJason(string inTaiwanUVJsonContent)
         {
             List<TaiwanCityUV> parsedTaiwanUVData = new List<TaiwanCityUV>();
