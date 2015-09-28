@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Win10DemoApp01.Models
 {   
-    //Taiwan UV 資料格式
+    //Taiwan UV 資料格式, Mapping 到OpenData 的Json 格式
     public class TaiwanCityUV: INotifyPropertyChanged
     {
         public string County { get; set; }
